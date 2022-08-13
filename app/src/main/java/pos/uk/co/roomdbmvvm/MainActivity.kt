@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import pos.uk.co.roomdbmvvm.databinding.ActivityMainBinding
 import pos.uk.co.roomdbmvvm.db.SubscriberDAO
 import pos.uk.co.roomdbmvvm.db.SubscriberDatabase
@@ -24,6 +25,11 @@ class MainActivity : AppCompatActivity() {
         binding.subscriberViewModelXML = subscriberViewModel
         binding.lifecycleOwner = this
 
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView(){
+        binding.subscriberRecyclerView.layoutManager = LinearLayoutManager(this)
         displaySubscribersList()
     }
 
@@ -32,6 +38,7 @@ class MainActivity : AppCompatActivity() {
             this,
             Observer {
                 println("============= ${it.toString()}")
+                binding.subscriberRecyclerView.adapter = MyRecyclerViewAdapter(it)
             }
         )
     }

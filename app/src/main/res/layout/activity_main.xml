@@ -2,6 +2,7 @@
 <layout>
 
     <data>
+
         <variable
             name="subscriberViewModelXML"
             type="pos.uk.co.roomdbmvvm.SubscriberViewModel" />
@@ -11,9 +12,9 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="15dp"
         android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:orientation="vertical"
         tools:context=".MainActivity">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -23,8 +24,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:imeOptions="flagNoFullscreen|actionNext"
                 android:hint="Subscriber's Name"
-                android:text="@={subscriberViewModelXML.inputName}"/>
+                android:text="@={subscriberViewModelXML.inputName}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -35,8 +37,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={subscriberViewModelXML.inputEmail}"
-                android:hint="Email" />
+                android:imeOptions="flagNoFullscreen|actionDone"
+                android:hint="Email"
+                android:text="@={subscriberViewModelXML.inputEmail}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -47,24 +50,26 @@
 
             <Button
                 android:id="@+id/btnSaveOreUpdate"
-                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="@{() -> subscriberViewModelXML.saveOrUpdate()}"
                 android:text="@={subscriberViewModelXML.saveOrUpdateButtonText}" />
 
             <Button
                 android:id="@+id/btnClearAllOrDelete"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="@{() -> subscriberViewModelXML.clearAllOrDelete()}"
                 android:text="@={subscriberViewModelXML.clearAllOrDeleteButtonText}" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/subscriber_recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
 
         </androidx.recyclerview.widget.RecyclerView>
 

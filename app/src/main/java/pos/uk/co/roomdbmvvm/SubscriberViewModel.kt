@@ -33,7 +33,7 @@ class SubscriberViewModel(private val repository: SubscriberRepository) : ViewMo
 
         insert(Subscriber(0, name, email))
         inputName.value = ""
-        inputEmail.value = " "
+        inputEmail.value = ""
     }
 
     fun clearAllOrDelete(){
